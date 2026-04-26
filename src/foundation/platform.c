@@ -298,11 +298,11 @@ const char *cbm_get_home_dir(void) {
 
 #ifndef _WIN32
 const char *cbm_app_config_dir(void) {
-    static char buf[1024];
 #ifdef __APPLE__
     /* macOS: callers prepend "Library/Application Support/..." */
     return cbm_get_home_dir();
 #else
+    static char buf[1024];
     /* Linux: XDG_CONFIG_HOME or ~/.config */
     // NOLINTNEXTLINE(concurrency-mt-unsafe)
     const char *xdg = getenv("XDG_CONFIG_HOME");
